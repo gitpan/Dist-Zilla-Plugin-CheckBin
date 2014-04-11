@@ -1,4 +1,9 @@
 Revision history for Dist-Zilla-Plugin-CheckBin
 
+0.002     2014-04-11 03:50:21Z
+          - add a runtime prereq on Devel::CheckBin, so that the generated
+            Makefile.PL can be successfully executed during a 'dzil test' or
+            'dzil release'
+
 0.001     2014-04-11 02:36:16Z
           - Initial release.

@@ -4,8 +4,8 @@ package Dist::Zilla::Plugin::CheckBin;
 BEGIN {
   $Dist::Zilla::Plugin::CheckBin::AUTHORITY = 'cpan:ETHER';
 }
-# git description: a2c21cf
-$Dist::Zilla::Plugin::CheckBin::VERSION = '0.001';
+# git description: v0.001-1-gba10836
+$Dist::Zilla::Plugin::CheckBin::VERSION = '0.002';
 # ABSTRACT: Require that our distribution has a particular command available
 # vim: set ts=8 sw=4 tw=78 et :
 
@@ -71,7 +71,7 @@ Dist::Zilla::Plugin::CheckBin - Require that our distribution has a particular c
 
 =head1 VERSION
 
-version 0.001
+version 0.002
 
 =head1 SYNOPSIS
 

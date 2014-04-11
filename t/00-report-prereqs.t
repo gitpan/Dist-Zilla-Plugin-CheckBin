@@ -79,6 +79,7 @@ my $static_prereqs = do { my $x = {
                     },
        'runtime' => {
                       'requires' => {
+                                      'Devel::CheckBin' => '0',
                                       'Dist::Zilla::Role::InstallTool' => '0',
                                       'Dist::Zilla::Role::PrereqSource' => '0',
                                       'Moose' => '0',

@@ -80,6 +80,7 @@ my %WriteMakefileArgs = (
   "LICENSE" => "perl",
   "NAME" => "Dist::Zilla::Plugin::CheckBin",
   "PREREQ_PM" => {
+    "Devel::CheckBin" => 0,
     "Dist::Zilla::Role::InstallTool" => 0,
     "Dist::Zilla::Role::PrereqSource" => 0,
     "Moose" => 0,
@@ -97,7 +98,7 @@ my %WriteMakefileArgs = (
     "if" => 0,
     "version" => 0
   },
-  "VERSION" => "0.001",
+  "VERSION" => "0.002",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -105,6 +106,7 @@ my %WriteMakefileArgs = (
 
 
 my %FallbackPrereqs = (
+  "Devel::CheckBin" => 0,
   "Dist::Zilla::Role::InstallTool" => 0,
   "Dist::Zilla::Role::PrereqSource" => 0,
   "ExtUtils::MakeMaker" => 0,

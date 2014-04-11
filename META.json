@@ -57,6 +57,7 @@
       },
       "runtime" : {
          "requires" : {
+            "Devel::CheckBin" : "0",
             "Dist::Zilla::Role::InstallTool" : "0",
             "Dist::Zilla::Role::PrereqSource" : "0",
             "Moose" : "0",
@@ -86,7 +87,7 @@
    "provides" : {
       "Dist::Zilla::Plugin::CheckBin" : {
          "file" : "lib/Dist/Zilla/Plugin/CheckBin.pm",
-         "version" : "0.001"
+         "version" : "0.002"
       }
    },
    "release_status" : "stable",
@@ -102,7 +103,7 @@
          "web" : "https://github.com/karenetheridge/Dist-Zilla-Plugin-CheckBin"
       }
    },
-   "version" : "0.001",
+   "version" : "0.002",
    "x_Dist_Zilla" : {
       "perl" : {
          "version" : "5.019010"
@@ -661,6 +662,17 @@
          {
             "class" : "Dist::Zilla::Plugin::ConfirmRelease",
             "name" : "@Author::ETHER/ConfirmRelease",
+            "version" : "5.015"
+         },
+         {
+            "class" : "Dist::Zilla::Plugin::Prereqs",
+            "config" : {
+               "Dist::Zilla::Plugin::Prereqs" : {
+                  "phase" : "runtime",
+                  "type" : "requires"
+               }
+            },
+            "name" : "RuntimeRequires",
             "version" : "5.015"
          },
          {
