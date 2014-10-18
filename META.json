@@ -4,7 +4,7 @@
       "Karen Etheridge <ether@cpan.org>"
    ],
    "dynamic_config" : 1,
-   "generated_by" : "Dist::Zilla version 5.020, CPAN::Meta::Converter version 2.142060",
+   "generated_by" : "Dist::Zilla version 5.020, CPAN::Meta::Converter version 2.142690",
    "keywords" : [
       "distribution",
       "installation",
@@ -35,7 +35,7 @@
       },
       "develop" : {
          "recommends" : {
-            "Dist::Zilla::PluginBundle::Author::ETHER" : "0.073"
+            "Dist::Zilla::PluginBundle::Author::ETHER" : "0.075"
          },
          "requires" : {
             "Dist::Zilla" : "5",
@@ -49,12 +49,12 @@
             "Dist::Zilla::Plugin::CheckStrictVersion" : "0",
             "Dist::Zilla::Plugin::ConfirmRelease" : "0",
             "Dist::Zilla::Plugin::CopyFilesFromRelease" : "0",
-            "Dist::Zilla::Plugin::DynamicPrereqs" : "0",
+            "Dist::Zilla::Plugin::DynamicPrereqs" : "0.007",
             "Dist::Zilla::Plugin::EOLTests" : "0",
             "Dist::Zilla::Plugin::ExecDir" : "0",
             "Dist::Zilla::Plugin::FileFinder::ByName" : "0",
             "Dist::Zilla::Plugin::GenerateFile::ShareDir" : "0",
-            "Dist::Zilla::Plugin::Git::Check" : "0",
+            "Dist::Zilla::Plugin::Git::Check" : "2.025",
             "Dist::Zilla::Plugin::Git::CheckFor::CorrectBranch" : "0.004",
             "Dist::Zilla::Plugin::Git::CheckFor::MergeConflicts" : "0",
             "Dist::Zilla::Plugin::Git::Commit" : "2.020",
@@ -91,8 +91,8 @@
             "Dist::Zilla::Plugin::PromptIfStale" : "0",
             "Dist::Zilla::Plugin::Readme" : "0",
             "Dist::Zilla::Plugin::ReadmeAnyFromPod" : "0.142180",
-            "Dist::Zilla::Plugin::Run::AfterBuild" : "0",
-            "Dist::Zilla::Plugin::Run::AfterRelease" : "0",
+            "Dist::Zilla::Plugin::Run::AfterBuild" : "0.024",
+            "Dist::Zilla::Plugin::Run::AfterRelease" : "0.024",
             "Dist::Zilla::Plugin::RunExtraTests" : "0.019",
             "Dist::Zilla::Plugin::ShareDir" : "0",
             "Dist::Zilla::Plugin::Test::CPAN::Changes" : "0.008",
@@ -160,7 +160,7 @@
    "provides" : {
       "Dist::Zilla::Plugin::CheckBin" : {
          "file" : "lib/Dist/Zilla/Plugin/CheckBin.pm",
-         "version" : "0.004"
+         "version" : "0.005"
       }
    },
    "release_status" : "stable",
@@ -178,7 +178,7 @@
       "x_IRC" : "irc://irc.perl.org/#distzilla",
       "x_MailingList" : "http://dzil.org/#mailing-list"
    },
-   "version" : "0.004",
+   "version" : "0.005",
    "x_Dist_Zilla" : {
       "perl" : {
          "version" : "5.021003"
@@ -208,7 +208,7 @@
                }
             },
             "name" : "@Author::ETHER/Git::NextVersion",
-            "version" : "2.023"
+            "version" : "2.025"
          },
          {
             "class" : "Dist::Zilla::Plugin::PromptIfStale",
@@ -224,7 +224,7 @@
                }
             },
             "name" : "@Author::ETHER/stale modules, build",
-            "version" : "0.024"
+            "version" : "0.028"
          },
          {
             "class" : "Dist::Zilla::Plugin::PromptIfStale",
@@ -238,7 +238,7 @@
                }
             },
             "name" : "@Author::ETHER/stale modules, release",
-            "version" : "0.024"
+            "version" : "0.028"
          },
          {
             "class" : "Dist::Zilla::Plugin::ExecDir",
@@ -271,7 +271,7 @@
                }
             },
             "name" : "@Author::ETHER/Git::GatherDir",
-            "version" : "2.023"
+            "version" : "2.025"
          },
          {
             "class" : "Dist::Zilla::Plugin::MetaYAML",
@@ -333,7 +333,7 @@
                }
             },
             "name" : "@Author::ETHER/Test::Compile",
-            "version" : "2.046"
+            "version" : "2.051"
          },
          {
             "class" : "Dist::Zilla::Plugin::Test::NoTabs",
@@ -700,12 +700,24 @@
             "config" : {
                "Dist::Zilla::Plugin::Run::Role::Runner" : {
                   "run" : [
-                     "bash -c \"if [[ `dirname %d` != .build ]]; then test -e .ackrc && grep -q -- '--ignore-dir=%d' .ackrc || echo '--ignore-dir=%d' >> .ackrc; fi; if [[ %d =~ ^%n-[.[:xdigit:]]+$ ]]; then rm -f .latest; ln -s %d .latest; fi\""
+                     "bash -c \"if [[ `dirname %d` != .build ]]; then test -e .ackrc && grep -q -- '--ignore-dir=%d' .ackrc || echo '--ignore-dir=%d' >> .ackrc; fi\""
                   ]
                }
             },
-            "name" : "@Author::ETHER/Run::AfterBuild",
-            "version" : "0.023"
+            "name" : "@Author::ETHER/.ackrc",
+            "version" : "0.026"
+         },
+         {
+            "class" : "Dist::Zilla::Plugin::Run::AfterBuild",
+            "config" : {
+               "Dist::Zilla::Plugin::Run::Role::Runner" : {
+                  "eval" : [
+                     "if ('%d' =~ /^%n-[.[:xdigit:]]+$/) { unlink '.latest'; symlink '%d', '.latest'; }"
+                  ]
+               }
+            },
+            "name" : "@Author::ETHER/.latest",
+            "version" : "0.026"
          },
          {
             "class" : "Dist::Zilla::Plugin::CheckStrictVersion",
@@ -728,7 +740,7 @@
                }
             },
             "name" : "@Author::ETHER/initial check",
-            "version" : "2.023"
+            "version" : "2.025"
          },
          {
             "class" : "Dist::Zilla::Plugin::Git::CheckFor::MergeConflicts",
@@ -781,7 +793,7 @@
                }
             },
             "name" : "@Author::ETHER/after tests",
-            "version" : "2.023"
+            "version" : "2.025"
          },
          {
             "class" : "Dist::Zilla::Plugin::CheckIssues",
@@ -802,13 +814,13 @@
             "class" : "Dist::Zilla::Plugin::Run::AfterRelease",
             "config" : {
                "Dist::Zilla::Plugin::Run::Role::Runner" : {
-                  "run" : [
-                     "rm -f README.md"
+                  "eval" : [
+                     "unlink 'README.md'"
                   ]
                }
             },
             "name" : "@Author::ETHER/remove old READMEs",
-            "version" : "0.023"
+            "version" : "0.026"
          },
          {
             "class" : "Dist::Zilla::Plugin::Git::Commit",
@@ -836,7 +848,7 @@
                }
             },
             "name" : "@Author::ETHER/Git::Commit",
-            "version" : "2.023"
+            "version" : "2.025"
          },
          {
             "class" : "Dist::Zilla::Plugin::Git::Tag",
@@ -844,7 +856,7 @@
                "Dist::Zilla::Plugin::Git::Tag" : {
                   "branch" : null,
                   "signed" : 0,
-                  "tag" : "v0.004",
+                  "tag" : "v0.005",
                   "tag_format" : "v%v%t",
                   "tag_message" : "v%v%t",
                   "time_zone" : "local"
@@ -854,7 +866,7 @@
                }
             },
             "name" : "@Author::ETHER/Git::Tag",
-            "version" : "2.023"
+            "version" : "2.025"
          },
          {
             "class" : "Dist::Zilla::Plugin::GitHub::Update",
@@ -875,7 +887,7 @@
                }
             },
             "name" : "@Author::ETHER/Git::Push",
-            "version" : "2.023"
+            "version" : "2.025"
          },
          {
             "class" : "Dist::Zilla::Plugin::Run::AfterRelease",
@@ -885,7 +897,7 @@
                }
             },
             "name" : "@Author::ETHER/install release",
-            "version" : "0.023"
+            "version" : "0.026"
          },
          {
             "class" : "Dist::Zilla::Plugin::ConfirmRelease",
@@ -922,7 +934,7 @@
          {
             "class" : "Dist::Zilla::Plugin::DynamicPrereqs",
             "name" : "DynamicPrereqs",
-            "version" : "0.005"
+            "version" : "0.008"
          },
          {
             "class" : "Dist::Zilla::Plugin::Test::CleanNamespaces",
