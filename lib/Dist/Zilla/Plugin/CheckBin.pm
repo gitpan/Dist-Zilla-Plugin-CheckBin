@@ -1,8 +1,8 @@
 use strict;
 use warnings;
 package Dist::Zilla::Plugin::CheckBin;
-# git description: v0.005-2-g76706a3
-$Dist::Zilla::Plugin::CheckBin::VERSION = '0.006';
+# git description: v0.006-3-gc518c94
+$Dist::Zilla::Plugin::CheckBin::VERSION = '0.007';
 # ABSTRACT: Require that our distribution has a particular command available
 # KEYWORDS: distribution installation require binary program executable
 # vim: set ts=8 sw=4 tw=78 et :
@@ -121,7 +121,7 @@ Dist::Zilla::Plugin::CheckBin - Require that our distribution has a particular c
 
 =head1 VERSION
 
-version 0.006
+version 0.007
 
 =head1 SYNOPSIS
 

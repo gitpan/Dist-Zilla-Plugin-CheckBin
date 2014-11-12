@@ -1,5 +1,10 @@
 Revision history for Dist-Zilla-Plugin-CheckBin
 
+0.007     2014-11-12 05:47:53Z
+          - fix optional tests of interaction with [MakeMaker::Fallback] that
+            broke with its newest release
+          - avoid testing with [MakeMaker::Awesome] if its version is too old
+
 0.006     2014-11-11 06:53:09Z
           - fix optional tests of interaction with
             [ModuleBuildTiny::Fallback] that broke with its newest release
